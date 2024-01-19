@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  /* outline: solid 1px green; */
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --dark-blue: hsl(208, 23%, 22%);
+  --very-dark-blue: hsl(207, 26%, 17%);
+  --very-dark-blue-text: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+}
+
+/* 
+- Dark Blue (Dark Mode Elements)
+- Very Dark Blue (Dark Mode Background)
+- Very Dark Blue (Light Mode Text)
+- Dark Gray (Light Mode Input)
+- Very Light Gray (Light Mode Background)
+- White (Dark Mode Text & Light Mode Elements)
+*/
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--very-dark-blue-text);
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+body {
+  margin: 0;
+  background-color: var(--very-light-gray);
+  color: var(--very-dark-blue-text);
+}
+
+.container {
+  width: 90vw;
+  min-width: 90wv;
+  margin: 0 auto;
+}
+
+.dark {
+  background-color: var(--very-dark-blue);
+  color: var(--white);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.4em;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: 1.8em;
+  line-height: 1.1;
+}
+
+h4 {
+  font-size: 1.4em;
+  line-height: 1.1;
+}
+
+h5 {
+  font-size: 1.2em;
+  line-height: 1.1;
+}
+
+h6 {
+  font-size: 1em;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--very-dark-blue-text);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+}
+
+.flag {
+  object-fit: cover;
+  /* object-position: center; */
+  /* height: 200px; */
+}
+
+.moon {
+  color: var(--very-dark-blue);
+}
+
+.header {
+  color: var(--very-dark-blue-text);
+}
+
+.header,.card {
+  background-color: var(--white);
+}
+
+
+.dark-shadow {
+  box-shadow: 1px 1px 3px var(--very-dark-dlue);
+}
+
+.light-shadow {
+  box-shadow: 1px 1px 3px var(--very-light-gray);
+}
+
+.dark-component {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.moon-white {
+  color: var(--white);
+}
+.search-icon {
+  position: absolute;
+  top: 30%;
+  left: 3%;
+}
+
+.search-input::placeholder {
+  padding-left: 5%;
+}
