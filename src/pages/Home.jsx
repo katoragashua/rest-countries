@@ -10,14 +10,14 @@ export async function loader() {
 
 const Home = () => {
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
   const [query, setQuery] = React.useState(() => ({ search: "", filter: "" }));
 
   const [countries, setCountries] = React.useState(() => [...data]);
  
   const handleQuery = (e) => {
     const { name, value } = e.target;
-    console.log(name);
+    // console.log(name);
     setQuery({ ...query, [name]: value });
 
     if (name === "search") {
@@ -36,7 +36,7 @@ const Home = () => {
     }
   };
 
-  console.log(query);
+  // console.log(query);
   return (
     <main className="home xl:pt-16">
       <div className="container grid xl:gap-16">

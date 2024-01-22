@@ -24,7 +24,7 @@ const CountryDetail = () => {
     flags,
     borders,
   } = country;
-  console.log(country);
+  // console.log(country);
 
   const { theme } = useOutletContext();
 
