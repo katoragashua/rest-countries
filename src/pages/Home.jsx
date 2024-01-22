@@ -10,7 +10,7 @@ export async function loader() {
 
 const Home = () => {
   const data = useLoaderData();
-  // console.log(data);
+  console.log(data);
   const [query, setQuery] = React.useState(() => ({ search: "", filter: "" }));
 
   const [countries, setCountries] = React.useState(() => [...data]);

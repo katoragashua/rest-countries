@@ -1,14 +1,17 @@
 import React from "react";
-import { Link, useOutletContext, useLoaderData } from "react-router-dom";
-import { getCountry } from "../api";
+import { Link, useOutletContext, useLoaderData, Navigate, redirect } from "react-router-dom";
+import { getCountries, getCountry } from "../api";
 
 export const loader = async ({ req, params }) => {
-  const country = await getCountry(params.country);
-  return country;
+  const countries = await getCountries();
+  const country = await countries.find(
+    (country) => country.name.common === params.country
+  );
+  return { countries, country };
 };
 
 const CountryDetail = () => {
-  const country = useLoaderData();
+  const { countries, country } = useLoaderData();
   const {
     name,
     population,
@@ -20,10 +23,10 @@ const CountryDetail = () => {
     languages,
     flags,
     borders,
-  } = country[0];
-  // console.log(country);
+  } = country;
+  console.log(country);
 
-  const {theme} = useOutletContext()
+  const { theme } = useOutletContext();
 
   //Get Native name
   const nativeKeys = Object.keys(name.nativeName);
@@ -42,8 +45,12 @@ const CountryDetail = () => {
 
   return (
     <div className="container grid gap-12 py-12 items-start ">
-      <Link to={"/"} className="text-black font-light w-max" >
-        <button className={`px-4 py-2  bg-white rounded-sm shadow-lg  ${theme === "dark" && "dark-component"}`}>
+      <Link to={"/"} className="text-black font-light w-max">
+        <button
+          className={`px-4 py-2  bg-white rounded-sm shadow-lg  ${
+            theme === "dark" && "dark-component"
+          }`}
+        >
           ← Back
         </button>
       </Link>
@@ -51,7 +58,7 @@ const CountryDetail = () => {
         className="grid xl:grid-cols-2 gap-20
       "
       >
-        <img src={flags?.svg} alt={flags.alt} />
+        <div className="w-full max-w-full"><img src={flags?.svg} alt={flags.alt}  className="max-w-full"/></div>
         <div className="grid gap-8">
           <h3 className="font-semibold">{name.common}</h3>
           <div className="flex flex-col items-start md:flex-row  gap-20 ">
@@ -99,14 +106,21 @@ const CountryDetail = () => {
           </div>
           <div className="flex gap-2 items-center">
             <h6>Border Countries:</h6>
-            <div className={`flex gap-2 `}>
+            <div className={`flex gap-2 flex-wrap items-start`}>
               {borders?.map((border, index) => (
-                <span
+                <Link
                   key={index}
-                  className={`py-1 px-2 shadow-lg  bg-white rounded-sm ${theme === "dark" && "dark-component"}`}
+                  to={`/${countries.find(country => (country.cca3 === border)).name["common"]}`}
+                  className="text-black"
                 >
-                  {border}
-                </span>
+                  <span
+                    className={`py-1 px-2 shadow-lg  bg-white rounded-sm ${
+                      theme === "dark" && "dark-component"
+                    }`}
+                  >
+                    {border}
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
