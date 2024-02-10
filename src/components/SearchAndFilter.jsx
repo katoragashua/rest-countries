@@ -21,9 +21,9 @@ const SearchAndFilter = (props) => {
   );
 
   return (
-    <div className="search-and-filter flex flex-col gap-8 py-8  xl:flex-row justify-between">
+    <div className="search-and-filter flex flex-col gap-8 py-8  lg:flex-row justify-between">
       <div
-        className={`search rounded-[4px] xl:w-[40%] overflow-auto shadow-md relative `}
+        className={`search rounded-[4px] lg:w-[40%] overflow-auto shadow-md relative `}
       >
         <input
           type="text"
@@ -42,7 +42,7 @@ const SearchAndFilter = (props) => {
         onChange={handleQuery}
         className={`px-4 py-3 rounded-[4px] outline-none shadow-md w-[60%] ${
           theme === "dark" && "dark-component"
-        } xl:w-[20%]`}
+        } lg:w-[20%]`}
       >
         <option value="">Filter by Region</option>
         <option value="africa">Africa</option>

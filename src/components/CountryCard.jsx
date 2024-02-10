@@ -11,7 +11,7 @@ const CountryCard = (props) => {
         <img
           src={flags.svg}
           alt=""
-          className="flag h-[150px] w-full object-contain"
+          className="flag h-[170px] w-full object-contain"
         />
       </Link>
       <div className="card-body grid gap-2 p-6 pb-8">
